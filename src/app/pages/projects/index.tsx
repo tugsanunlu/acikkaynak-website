@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ProjectsListView from './projectsListView';
 import ProjectsDetailView from './projectsDetailView';
+import { Container, Header, Message, Icon } from 'semantic-ui-react';
 
 const bulmaStyles = {};
 
@@ -12,9 +13,9 @@ function Projects(props) {
             title: "Açık kaynak içerik projesi",
             content: "Açık kaynak içeriklerinin listelendiği proje",
             category: "Web-Onyuz",
-            stars : 55,
-            participation : false,
-            sponsor : true
+            stars: 55,
+            participation: false,
+            sponsor: true
         },
         {
             id: 2,
@@ -22,9 +23,9 @@ function Projects(props) {
             title: "İzmir bisiklet projesi",
             content: "İzmir bisiklet durakları ve sürelerini gösteren proje",
             category: "Web-arkayuz",
-            stars : 15,
+            stars: 15,
             participation: false,
-            sponsor : true
+            sponsor: true
         }
     ]);
 
@@ -33,13 +34,28 @@ function Projects(props) {
 
         if (currentProjectsItem !== undefined) {
             return (
-                <ProjectsDetailView content={currentProjectsItem} />
+                <div>
+                    <Container>
+                       
+                        <ProjectsDetailView content={currentProjectsItem} />
+                        <br />
+                    </Container>
+                </div>
             );
         }
     }
 
     return (
-        <ProjectsListView projects={projects} {...props} />
+        <div>
+            <Container>
+                <Header as='h2' icon textAlign='center'>
+                    <Icon name='clipboard list' circular />
+                    <Header.Content>Projeler</Header.Content>
+                </Header>
+                <ProjectsListView projects={projects} {...props} />
+                <br />
+            </Container>
+        </div>
     );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Container, Header, Message, Icon, Grid, Image, Progress } from 'semantic-ui-react';
 
 const bulmaStyles = {};
 
@@ -10,25 +11,39 @@ function ProjectsDetailView(props) {
     }
 
     return (
-        <>
-            <h5 className={bulmaStyles.subtitle}>{props.content.title} proje detayı</h5>
-            <div>
-                <p>{props.content.content}</p>
-                <p>Star Sayısı : {props.content.stars}</p>
-                <p style={{backgroundColor: props.content.participation ? "green" : "red", width:"10%", color:"white"}}>
-                    {props.content.participation ? "Katılım Bekliyor." : "Katılım Beklemiyor."}
-                </p>
-                <p style={{backgroundColor: props.content.sponsor ? "green" : "red", width:"10%", color:"white"}}>
-                    {props.content.sponsor ? "Sponsor Bekliyor." : "Sponsor Beklemiyor."}
-                </p>
-                <p>{props.content.category}</p>
-            </div>
-            <NavLink key="0" to={`/projects/`} onClick={goBackButton}>
-                <p>
-                    Geri Dön
-                </p>
-            </NavLink>
-        </>
+        <div>
+
+            <Header as='h2' icon textAlign='center'>
+                <Icon name='code' circular />
+                <Header.Content>{props.content.title} detayı</Header.Content><br />
+                <Progress percent={44} progress />
+
+            </Header>
+            <Grid>
+                <Grid.Column width={4}>
+                    <Image src='https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2015/01/Blog_Learn-to-code.jpg' />
+                </Grid.Column>
+                <Grid.Column width={6}>
+                    <p>Proje Açıklaması : {props.content.content}</p>
+                    <p>Star Sayısı : {props.content.stars}</p>
+                    <p>Proje Kategorisi : {props.content.category}</p>
+
+                </Grid.Column>
+                <Grid.Column width={6}>
+                <p style={{ backgroundColor: props.content.participation ? "green" : "red", width: "50%", color: "white" }}>
+                        {props.content.participation ? "Katılım Bekliyor." : "Katılım Beklemiyor."}
+                    </p>
+                    <p style={{ backgroundColor: props.content.sponsor ? "green" : "red", width: "50%", color: "white" }}>
+                        {props.content.sponsor ? "Sponsor Bekliyor." : "Sponsor Beklemiyor."}
+                    </p>
+                    <NavLink key="0" to={`/projects/`} onClick={goBackButton}>
+                        <p>
+                            Geri Dön
+                        </p>
+                    </NavLink>
+                </Grid.Column>
+            </Grid>
+        </div>
     );
 }
 
