@@ -11,24 +11,24 @@ interface LearnProps {
 }
 
 function Learn(props: LearnProps) {
-    const [content, setContent] = useState(null);
+    const [ content, setContent ] = useState(null);
 
     useEffect(
         () => {
             setContent(`Talep edilen içerik yolu: /${props.contentPath}`);
         },
-        [props.contentPath]
+        [ props.contentPath ]
     );
 
     return (
-        <div>
+        <>
             <Container>
-                <Header as='h2' icon textAlign='center'>
+                <Header as="h2" icon textAlign="center">
                     <Icon name='caret square right' circular />
                     <Header.Content>Egitim</Header.Content>
                 </Header>
                 <Message icon>
-                    <Icon name='circle notched' loading />
+                    <Icon name="circle notched" loading />
                     <Message.Content>
                         <Message.Header>Yükleniyor...</Message.Header>
                         Bu sayfa yapım aşamasında.
@@ -36,7 +36,7 @@ function Learn(props: LearnProps) {
                 </Message>
                 <br/>
             </Container>
-        </div>
+        </>
     );
 }
 

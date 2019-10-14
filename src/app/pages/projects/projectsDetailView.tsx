@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import customProjectsStyle from './projects.scss'
+
 import { Container, Header, Message, Icon, Grid, Image, Progress } from 'semantic-ui-react';
 
 const bulmaStyles = {};
@@ -11,10 +13,10 @@ function ProjectsDetailView(props) {
     }
 
     return (
-        <div>
+        <>
 
-            <Header as='h2' icon textAlign='center'>
-                <Icon name='code' circular />
+            <Header as="h2" icon textAlign="center">
+                <Icon name="code" circular />
                 <Header.Content>{props.content.title} detayı</Header.Content><br />
                 <Progress percent={44} progress />
 
@@ -30,10 +32,10 @@ function ProjectsDetailView(props) {
 
                 </Grid.Column>
                 <Grid.Column width={6}>
-                <p style={{ backgroundColor: props.content.participation ? "green" : "red", width: "50%", color: "white" }}>
+                    <p className={props.content.participation ? `${customProjectsStyle.participationwanted}` : `${customProjectsStyle.participationunwanted}`}>
                         {props.content.participation ? "Katılım Bekliyor." : "Katılım Beklemiyor."}
                     </p>
-                    <p style={{ backgroundColor: props.content.sponsor ? "green" : "red", width: "50%", color: "white" }}>
+                    <p className={props.content.sponsor ? `${customProjectsStyle.participationwanted}` : `${customProjectsStyle.participationunwanted}`}>
                         {props.content.sponsor ? "Sponsor Bekliyor." : "Sponsor Beklemiyor."}
                     </p>
                     <NavLink key="0" to={`/projects/`} onClick={goBackButton}>
@@ -43,7 +45,7 @@ function ProjectsDetailView(props) {
                     </NavLink>
                 </Grid.Column>
             </Grid>
-        </div>
+        </>
     );
 }
 
